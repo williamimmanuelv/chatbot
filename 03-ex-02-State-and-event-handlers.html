@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> 03-ex-02-State-and-event-handlers </title>
+  </head>
+  <body>
+    <div class="js-container"></div> 
+
+    <script src="https://unpkg.com/supersimpledev@8.6.4/dayjs.js">
+    </script>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js">
+
+    </script>
+
+    <script type="text/babel">
+
+      function Input(){
+        const [inputValue,setInputValue] = React.useState('')
+
+        function getvalue(){
+          setInputValue(event.target.value);
+        }
+        function reset(){
+          setInputValue('')
+        }
+        function example(){
+          setInputValue('william')
+        }
+
+        return(
+          <>
+            <input onChange={getvalue} value={inputValue} placeholder='Type a name here'/>
+            <p>Hello {inputValue}</p>
+            <button onClick={reset}> Reset </button>
+            <button onClick={example}> Example </button>
+          </>
+        )
+      }
+      function App(){
+        return(
+          <>
+            <Input/>
+          </>
+        )
+      }
+
+
+
+
+    const container = document.querySelector('.js-container');
+      const root = ReactDOM.createRoot(container);
+      root.render(<App/>);
+
+    </script>
+  </body>
+</html>
