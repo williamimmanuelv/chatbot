@@ -66,7 +66,7 @@
         flex-grow: 1;
         margin-top: 20px;
         overflow: scroll;
-        /* scrollbar-width: none; */
+        scrollbar-width: none; 
       }
     </style>
   </head>
@@ -213,7 +213,7 @@
                 <div className="chat-Message-text">{Message}</div>
 
               {sender === "user" &&(
-                  <img src="robot.png" className="chat-Message-profile" />)
+                  <img src="user.png" className="chat-Message-profile" />)
               }
                 
               
@@ -223,17 +223,17 @@
 
     function ChatMessages({chatMessage}){
       const chatMessageRef = React.useRef(null);
-
+      
       React.useEffect(() => {
-        const containerElem = chatMessageRef.current.focus;
+        const containerElem = chatMessageRef.current;
         if(containerElem){
           containerElem.scrollTop = containerElem.scrollHeight;
         }
-        
-      },[ChatMessages]);
+      },[chatMessage])
+
       return(
         <div className="chat-Message-container"
-        ref={chatMessageRef}>
+          ref={chatMessageRef}>
           {chatMessage.map((chatMessage) => {
               return (
                 <ChatMessage
