@@ -3,14 +3,94 @@
   <head>
     <title>Chatbot</title>
     <style>
+/* //////////////    EX 01
+        /* .width{
+            width: 65px;
+        }
+        .btn-red{
+            border-style: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            color: white;
+            background-color: rgb(220, 53, 69);
+        }
+        .btn-green{
+            border-style: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            color: white;
+            background-color: rgb(25, 135, 84);
+        } */
 
+/* //////////////    EX 01
+
+        /* .main-div{
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+        .main-div p{
+          font-size: x-large;
+        }
+        .input{
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+        input{
+          padding: 6px 8px;
+          width: 200px;
+        }
+        .btn-1{
+          margin: 2.5px;
+          padding: 6px 8px;
+          border: none;
+          border-radius: 5px;
+          color: white;
+          background-color: rgb(0, 123, 255);
+        }
+        .btn-2{
+          margin: 2.5px;
+          padding: 6px 8px;
+          border: none;
+          border-radius: 5px;
+          color: white;
+          background-color: rgb(0, 123, 255);
+        }
+        .pass-btn{
+          margin: 2.5px;
+          // padding: 6px 8px;
+          border: none;
+          border-radius: 5px;
+          color: white;
+          background-color: rgb(0, 123, 255); 
+        } */
+        
+        *{
+          margin: 0px;
+          padding: 0px;
+        }
+        div{
+          display: flex;
+          gap: 10px;
+          height: 100vh;
+          justify-content: center;
+          align-items: center;
+          background-color: rgb(222,222,222);
+        }
+        button{
+          border: none;
+          color: white;
+          background-color: rgb(25,135,84);
+          padding: 6px 8px;
+        }
     </style>
   </head>
   <body>
     <div class="js-container"></div> 
 
-    <!-- <script src="https://unpkg.com/supersimpledev@8.6.4/dayjs.js">
-    </script> -->
+    <script src="https://unpkg.com/supersimpledev@8.6.4/dayjs.js">
+    </script>
 
     <script src="https://unpkg.com/supersimpledev/react.js"></script>
     <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
@@ -20,7 +100,83 @@
     
     <script type="text/babel">
         function App(){
-            <button className="btn-1"> On </button>
+          //////////////    EX 01
+          // const [state,setState] = React.useState(false);
+
+            // return(
+            // <button 
+            //   className={`width ${state === false ? 'btn-red' : 'btn-green'}`} 
+            //   onClick={() => setState(!state)}> 
+            //   {state ? 'ON' : 'OFF'} </button>)
+
+//////////////    EX 02
+
+            // const [pass,setPass] = React.useState(false) 
+            // function show(){
+            //   setPass(!pass)
+            // }
+
+            
+          //   return(
+          //     <div className="main-div"> 
+          //       <p> Hello, welcome to my website</p>
+          //       <div className='input'> 
+          //         <input className='input-1' 
+          //           placeholder='Email'/>
+          //           <div className='pass'>
+          //             <input className='input-2' 
+          //               placeholder='Password' type={!pass ? 'Password' : 'text'}/>
+          //               <button className='pass-btn' onClick={show} >
+          //                  {pass ? 'hide' : 'Show'} </button>
+          //           </div>
+          //       </div>
+          //       <div className='btn'>
+          //           <button className='btn-1'> Login </button>
+          //           <button className='btn-2'> Sign up </button>
+          //       </div>
+          //   </div>
+          // )
+          
+//////////////    EX 03
+
+          //   const [time,setTime] = React.useState();
+          //   React.useEffect(() => {
+          //     setInterval(() => {
+          //       setTime(dayjs().format('HH:mm:ss'));
+                
+          //     },1000)
+          // },[])
+          //   return(
+          //     <p>{time}</p>
+          //   )
+
+//////////////    EX 04
+
+            const [time,setTime] = React.useState(0);
+            const ref = React.useRef(null);
+
+            function set(){
+              const buttonElem = ref.current;
+              if(buttonElem){
+                setInterval(() => {
+                  buttonElem.click()
+                },1000)
+              } 
+            }
+            
+              
+            
+          return(
+            <div>
+              <button className="btn-1" ref={ref}
+                onClick={() =>setTime(time+1)}> Clicked {time} times </button>
+              <button className="btn-2"
+                onClick={() =>setTime(0)}> Reset </button>
+              <button onClick={set}
+                 className="btn-3"> Auto Click </button>
+            </div>
+          )
+            
         }
       const container = document.querySelector('.js-container');
       const root = ReactDOM.createRoot(container);
